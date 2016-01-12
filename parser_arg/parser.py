@@ -1,6 +1,7 @@
 import getopt
-from validator import validator_file
+from validator import validator_file, validator_pattern
 import sys
+
 
 def parser():
     try:
@@ -18,8 +19,6 @@ def parser():
             input_filename = arg
         elif opt == "-p":
             pattern = arg
-            if pattern not in ("direct", "reverse"):
-                sys.exit(2)
         elif opt in ("-h", "--help"):
             print("in progress")
             sys.exit()
@@ -29,11 +28,10 @@ def parser():
             print "unhandled option"
             sys.exit(2)
 
-    if not (validator_file(input_filename)):
+    if not validator_file(input_filename) or not validator_file(output_filename) or not validator_pattern(pattern):
         sys.exit(2)
 
-    if not (validator_file(output_filename)):
-        sys.exit(2)
+    return (input_filename, output_filename, pattern)
 
 
 if __name__ == "__main__":

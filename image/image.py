@@ -1,6 +1,11 @@
 from scipy import misc
 import numpy as np
 
+
+def read_image(file_name):
+    return misc.imread(file_name)
+
+
 def image():
     f = misc.face()
     misc.imsave('face.png', f)
@@ -16,9 +21,3 @@ def image():
     import matplotlib.pyplot as plt
     plt.imshow(f)
     #plt.show()
-
-def main():
-    image()
-
-if __name__ == "__main__":
-    main()

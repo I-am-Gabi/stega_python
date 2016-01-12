@@ -1,4 +1,4 @@
-import getopt, sys
+import getopt
 from validator import validator_file
 import sys
 

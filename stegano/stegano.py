@@ -4,6 +4,9 @@ from patterns.sequential import uncover
 
 def reveal(args):
     if "direct" in args:
-        return uncover(read_image(args[0]), True)
+        response = uncover(read_image(args[0]), True, args[3], args[4])
     elif "reverse" in args:
-        return uncover(read_image(args[0]), False)
+        response = uncover(read_image(args[0]), False, args[3], args[4])
+
+    if type(response) == str:
+            return response

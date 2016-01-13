@@ -11,7 +11,7 @@ from util.binary import get_bit, set_bit
 import re, sys
 
 
-def uncover(image, pattern):
+def uncover(image, pattern, bits, channel):
     h, w, c = image.shape
     byte = 0
     msg = ""
@@ -33,17 +33,17 @@ def uncover(image, pattern):
 
     for i in range(start_line, stop_line, tax):
         for j in range(start_column, stop_column, tax):
-            pixel = image[i, j, 2]
-            byte = set_bit(byte, index_byte, get_bit(pixel, 0))
-            index_byte -= 1
+            pixel = image[i, j, channel]
 
-            if magic in msg:
-                msg = re.sub(magic, '', msg)
-                return msg
-            elif index_byte == -1:
-                msg += chr(byte)
-                byte = 0
-                index_byte = 7
+            for bit in range(bits - 1, -1, -1):
+                byte = set_bit(byte, index_byte, get_bit(pixel, bit))
+                index_byte -= 1
+                if magic in msg:
+                    msg = re.sub(magic, '', msg)
+                    return msg
+                elif index_byte == -1:
+                    msg += chr(byte)
+                    byte = 0
+                    index_byte = 7
 
-    print "there is not magic number in the file"
-    sys.exit(2)
+    return (byte, index_byte)

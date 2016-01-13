@@ -1,6 +1,5 @@
 from parser_arg.parser import parser
 from stegano.stegano import reveal
-import difflib
 
 
 def main():

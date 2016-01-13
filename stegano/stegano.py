@@ -1,5 +1,5 @@
 from image.image import read_image
-from patterns.direct import uncover
+from patterns.sequential import uncover
 
 
 def reveal(args):

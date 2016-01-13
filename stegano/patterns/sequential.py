@@ -18,14 +18,22 @@ def uncover(image, pattern):
     index_byte = 7
     magic = "HELP"
 
-    start_line = 0
-    stop_line = h
-    start_column = 0
-    stop_column = w
+    if (pattern):
+        start_line = 0
+        stop_line = h
+        start_column = 0
+        stop_column = w
+        tax = 1
+    else:
+        start_line = h - 1
+        stop_line = -1
+        start_column = w - 1
+        stop_column = -1
+        tax = -1
 
-    for i in range(start_line, stop_line):
-        for j in range(start_column, stop_column):
-            pixel = image[i, j, 1]
+    for i in range(start_line, stop_line, tax):
+        for j in range(start_column, stop_column, tax):
+            pixel = image[i, j, 2]
             byte = set_bit(byte, index_byte, get_bit(pixel, 0))
             index_byte -= 1
 

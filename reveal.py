@@ -1,16 +1,17 @@
 from parser_arg.parser import parser
 from stegano.stegano import reveal
-import filecmp
+import difflib
 
 
 def main():
     arg = parser()
 
     msg = reveal(arg)
-    file_output = open(arg[1], 'wb')
-    file_output.write(str(msg))
+    if msg:
+        print "steganography finish"
 
-    print filecmp.cmp("resources/txt/originaltext1.txt", arg[1], shallow=False)
+    file_output = open(arg[1], 'r+b')
+    file_output.write(str(msg))
 
 if __name__ == "__main__":
     main()

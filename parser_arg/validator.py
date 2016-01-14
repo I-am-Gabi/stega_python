@@ -1,4 +1,5 @@
 import os.path
+import magic
 
 
 def validator_file(file):
@@ -22,9 +23,18 @@ def validator_channels(channels):
         return False
     if len(set(channels)) != len(channels):
         return False
-    # TODO: see this
-    """if set(channels).issubset(set(['red', 'green', 'blue'])):
-        print channels in ['red', 'green', 'blue']
-        return False"""
+    if not list(set(channels).intersection(['red', 'green', 'blue'])):
+        return False
     return True
 
+
+def validator_signature_file(file_name):
+    signature_valides = ["png", "bmp"]
+
+    try:
+        file_signature = magic.from_file(file_name).lower().split(' ')
+        if list(set(signature_valides).intersection(file_signature)):
+            return True
+        return False
+    except Exception as e:
+        "File signature error({0})".format(e)

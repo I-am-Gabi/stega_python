@@ -1,5 +1,5 @@
 import getopt
-from validator import validator_file, validator_pattern, validator_channels
+from validator import validator_file, validator_pattern, validator_channels, validator_signature_file
 import sys
 
 
@@ -31,7 +31,7 @@ def parser():
         elif opt == "-c":
             channels = arg.lower().split(',')
             if len(channels) > 1:
-                print "choice just one channel"
+                print 'choice just one channel'
                 sys.exit(2)
         else:
             print "unhandled option"
@@ -40,7 +40,8 @@ def parser():
     if not validator_file(input_filename) \
             or not validator_file(output_filename) \
             or not validator_pattern(pattern) \
-            or not validator_channels(channels):
+            or not validator_channels(channels) \
+            or not validator_signature_file(input_filename):
         print "Error Argument"
         sys.exit(2)
 

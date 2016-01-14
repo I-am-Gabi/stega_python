@@ -5,4 +5,5 @@
 
 **dependencies**
 
-pip install testfixtures
+- pip install testfixtures
+- pip install python-magic

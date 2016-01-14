@@ -29,7 +29,7 @@ def validator_channels(channels):
 
 
 def validator_signature_file(file_name):
-    signature_valides = ["png", "bmp"]
+    signature_valides = ["png", "bmp", "pgm", "ppm"]
 
     try:
         file_signature = magic.from_file(file_name).lower().split(' ')
@@ -38,3 +38,9 @@ def validator_signature_file(file_name):
         return False
     except Exception as e:
         "File signature error({0})".format(e)
+
+
+def validator_bitfactor(bit):
+    if bit > 8 or bit <= 0:
+        return False
+    return True

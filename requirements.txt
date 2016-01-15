@@ -1,8 +1,5 @@
 Cython==0.23.4
 numpy==1.8.0rc1
-oauthlib==1.0.3
-Pillow==3.0.0
-py2app==0.7.3
 python-magic==0.4.10
 scipy==0.13.0b1
 testfixtures==4.7.0

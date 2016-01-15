@@ -22,7 +22,7 @@ def parser():
         elif opt == "-p":
             pattern = arg
         elif opt in ("-h", "--help"):
-            print("in progress")
+            print("python reveal.py -i resources/images/direct_Red_8.png -o resources/txt/output.txt -b 8 -c red")
             sys.exit()
         elif opt in ("-o", "--output"):
             output_filename = arg
@@ -37,11 +37,8 @@ def parser():
             print "unhandled option"
             sys.exit(2)
 
-    if not validator_file(input_filename) \
-            or not validator_file(output_filename) \
-            or not validator_pattern(pattern) \
-            or not validator_channels(channels) \
-            or not validator_signature_file(input_filename) \
+    if not (validator_file(input_filename) and validator_file(output_filename) and validator_pattern(
+            pattern) and validator_channels(channels) and validator_file_signature(input_filename)) \
             or not validator_bit_factor(bits):
         print "Error Argument"
         sys.exit(2)

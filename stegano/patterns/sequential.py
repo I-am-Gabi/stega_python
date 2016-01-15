@@ -8,7 +8,6 @@ import re
 
 
 def uncover(image, pattern, bits, channel):
-    print pattern, bits, channel
     h, w, c = image.shape
     byte = 0
     msg = ""
@@ -33,7 +32,6 @@ def uncover(image, pattern, bits, channel):
             pixel = image[i, j, channel]
 
             for bit in range(bits - 1, -1, -1):
-                print bit
                 byte = set_bit(byte, index_byte, get_bit(pixel, bit))
                 index_byte -= 1
                 if magic in msg:
@@ -43,7 +41,6 @@ def uncover(image, pattern, bits, channel):
                     msg += chr(byte)
                     byte = 0
                     index_byte = 7
-        break
 
     return msg
     # return (byte, index_byte)

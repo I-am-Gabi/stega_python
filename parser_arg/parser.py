@@ -1,5 +1,5 @@
 import getopt
-from validator import validator_file, validator_pattern, validator_channels, validator_signature_file, validator_bitfactor
+from validator import *
 import sys
 
 
@@ -41,8 +41,8 @@ def parser():
             or not validator_file(output_filename) \
             or not validator_pattern(pattern) \
             or not validator_channels(channels) \
-            or not validator_signature_file(input_filename)\
-            or not validator_bitfactor(bits):
+            or not validator_signature_file(input_filename) \
+            or not validator_bit_factor(bits):
         print "Error Argument"
         sys.exit(2)
 
@@ -53,7 +53,7 @@ def parser():
     else:
         channels = 0
 
-    return (input_filename, output_filename, pattern, bits, channels)
+    return input_filename, output_filename, pattern, bits, channels
 
 
 if __name__ == "__main__":

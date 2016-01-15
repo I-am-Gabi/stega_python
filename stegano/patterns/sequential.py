@@ -1,24 +1,21 @@
 """
-channel standard is
 red = 2
-green = 1 <--
+green = 1
 blue = 0
-
-pixel = set_bit(pixel, 1, get_bit(pixel, 1))
-image.itemset((i, j, 2), pixel)
 """
 from util.binary import get_bit, set_bit
-import re, sys
+import re
 
 
 def uncover(image, pattern, bits, channel):
+    print pattern, bits, channel
     h, w, c = image.shape
     byte = 0
     msg = ""
     index_byte = 7
     magic = "HELP"
 
-    if (pattern):
+    if pattern:
         start_line = 0
         stop_line = h
         start_column = 0
@@ -36,6 +33,7 @@ def uncover(image, pattern, bits, channel):
             pixel = image[i, j, channel]
 
             for bit in range(bits - 1, -1, -1):
+                print bit
                 byte = set_bit(byte, index_byte, get_bit(pixel, bit))
                 index_byte -= 1
                 if magic in msg:
@@ -45,5 +43,7 @@ def uncover(image, pattern, bits, channel):
                     msg += chr(byte)
                     byte = 0
                     index_byte = 7
+        break
 
-    return (byte, index_byte)
+    return msg
+    # return (byte, index_byte)

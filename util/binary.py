@@ -1,5 +1,4 @@
 
-
 def get_bit(int_type, offset):
     return (int_type & (1 << offset)) >> offset
 

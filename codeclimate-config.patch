@@ -1,27 +1,17 @@
-diff --git a/.codeclimate.yml b/.codeclimate.yml
-index e69de29..b6f2660 100644
---- a/.codeclimate.yml
-+++ b/.codeclimate.yml
-@@ -0,0 +1,25 @@
-+---
-+engines:
-+  duplication:
-+    enabled: true
-+    config:
-+      languages: 
-+      - python
-+  fixme:
-+    enabled: true
-+  radon:
-+    enabled: true
-+ratings:
-+  paths:
-+  - "**.inc"
-+  - "**.js"
-+  - "**.jsx"
-+  - "**.module"
-+  - "**.php"
-+  - "**.py"
-+  - "**.rb"
-+exclude_paths:
-+- tests/**/*
+engines:
+  rubocop:
+    enabled: true
+  golint:
+    enabled: true
+  eslint:
+    enabled: true
+  csslint:
+    enabled: true
+  config:
+    languages:
+    - python
+ratings:
+  paths:
+  - **.py
+exclude_paths:
+- tests/**/*

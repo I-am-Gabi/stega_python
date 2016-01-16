@@ -8,11 +8,8 @@ index e69de29..b6f2660 100644
 +  duplication:
 +    enabled: true
 +    config:
-+      languages:
-+      - ruby
-+      - javascript
++      languages: 
 +      - python
-+      - php
 +  fixme:
 +    enabled: true
 +  radon:

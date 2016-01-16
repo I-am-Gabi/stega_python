@@ -11,3 +11,7 @@
 
 - pip install testfixtures
 - pip install python-magic
+
+scipy==0.13.0
+
+numpy==1.8.0

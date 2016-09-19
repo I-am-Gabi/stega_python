@@ -1,11 +1,15 @@
 from parser_arg.parser import parser
-from stegano.stegano import reveal
+from stegano.revelation.stegano import reveal
 
 
 def main():
     arg = parser()
 
-    msg = reveal(arg)
+    if "revelation" in arg:
+        msg = reveal(arg)
+    else:
+        msg = dissimulation(arg)
+
     if msg:
         print "steganography finish"
 

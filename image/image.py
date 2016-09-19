@@ -11,7 +11,6 @@ def image():
     misc.imsave('face.png', f)
 
     face = misc.imread('face.png')
-    print type(face)
     print face.shape, face.dtype  # 8-bit images (0-255)
 
     face.tofile('face.raw')

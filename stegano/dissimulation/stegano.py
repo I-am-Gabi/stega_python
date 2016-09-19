@@ -1,5 +1,5 @@
 from image.image import read_image
-from patterns.sequential import uncover
+from stegano.revelation.patterns.sequential import uncover
 
 
 def reveal(args):

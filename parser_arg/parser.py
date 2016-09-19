@@ -5,11 +5,12 @@ import sys
 
 def parser():
     try:
-        opts, args = getopt.getopt(sys.argv[1:], "i:p:o:b:c:h", ["help", "output", "input"])
+        opts, args = getopt.getopt(sys.argv[1:], "i:p:o:b:c:h", ["help", "output", "input", "operation"])
     except getopt.GetoptError as err:
         print str(err)  # will print something like "option -a not recognized"
         sys.exit(2)
 
+    operation = ""
     input_filename = ""
     output_filename = ""
     pattern = "direct"
@@ -21,9 +22,6 @@ def parser():
             input_filename = arg
         elif opt == "-p":
             pattern = arg
-        elif opt in ("-h", "--help"):
-            print("python reveal.py -i resources/images/direct_Red_8.png -o resources/txt/output.txt -b 8 -c red")
-            sys.exit()
         elif opt in ("-o", "--output"):
             output_filename = arg
         elif opt == "-b":
@@ -33,6 +31,11 @@ def parser():
             if len(channels) > 1:
                 print 'choice just one channel'
                 sys.exit(2)
+        elif opt == "-operation":
+            operation = arg
+        elif opt in ("-h", "--help"):
+            print("python stegano.py -i resources/images/direct_Green_1.png -o resources/txt/output.txt -b 1 -c green")
+            sys.exit()
         else:
             print "unhandled option"
             sys.exit(2)
@@ -50,7 +53,7 @@ def parser():
     else:
         channels = 0
 
-    return input_filename, output_filename, pattern, bits, channels
+    return input_filename, output_filename, pattern, bits, channels, operation
 
 
 if __name__ == "__main__":
